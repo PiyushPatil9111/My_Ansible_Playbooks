@@ -1,0 +1,9 @@
+--- #My playbook to install httpd on all hosts
+- hosts: demo[1]
+  user: ansible
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: installing httpd on host1
+      action: yum name=httpd state=installed

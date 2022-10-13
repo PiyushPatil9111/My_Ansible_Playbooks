@@ -1,0 +1,12 @@
+--- #using handlers inplaybook
+- hosts: demo[1]
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+    - name: installing httpd and then notifying handler
+      action: yum pkg=httpd state=installed
+      notify: handler_to_restart
+  handlers:
+    - name: handler_to_restart
+      action: service name=httpd state=restarted

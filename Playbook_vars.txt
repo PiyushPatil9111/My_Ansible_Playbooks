@@ -1,0 +1,10 @@
+--- # Installing tree package but keeping tree in vars
+- hosts: demo[1]
+  user: ansible
+  become: yes
+  connection: ssh
+  vars:
+    pkgname: tree
+  tasks:
+   - name: Installing tree package using vars
+     action: yum name='{{pkgname}}' state=installed

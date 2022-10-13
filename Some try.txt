@@ -1,0 +1,14 @@
+C:\Program Files\Java\jdk-11.0.16
+
+---
+-hosts: demo
+ user: ansible
+ become: yes
+ connection: ssh
+ task:
+  -name: installing chef
+   action: yum pkg=chef state:installed
+   notify: Handler_name
+ handlers:
+  -name: Handler_name
+   action: service name=chef state=started
